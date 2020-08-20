@@ -132,11 +132,11 @@ bool getData(ifstream& f, vector<vector<double>>& data) {
 		istringstream  lineStream(line + ",");
 		data.emplace_back(); //append new vector if line not end
 		while (getline(lineStream, val, ',')) {
-			if (!isNum(val)) {
+			if (val.empty() || !isNum(val)) {
 				cout << "Data contain non numeric value.\nPlease try again" << endl;
 				return false;
 			}
-			data.back().push_back(stoi(val)); //append data 
+			data.back().push_back(stod(val)); //append data 
 		}
 	}
 
