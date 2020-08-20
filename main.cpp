@@ -20,7 +20,6 @@ bool getTitleRow(ifstream&, vector<string>&);
 bool getData(ifstream&, vector<vector<double>>&);
 bool isColRowMatch(vector<vector<double>>, int, int);
 
-
 //transpose vector
 void transposeV(vector<vector<double>>, vector<vector<double>>&);
 
@@ -73,7 +72,7 @@ void loadFile(vector<string>& title, vector<vector<double>>& data, int& col, int
 		if (!getData(f, data)) //get data from file, check format
 			continue;
 
-		if (!isColRowMatch(data, col, row))//get data from file
+		if (!isColRowMatch(data, col, row))//check format
 			continue;
 
 		break;
@@ -131,7 +130,7 @@ bool getData(ifstream& f, vector<vector<double>>& data) {
 		data.emplace_back(); //append new vector if line not end
 		while (getline(lineStream, val, ',')) {
 			if (!isNum(val)) {
-				cout << "Data contain non numeric which can't be process." << endl;
+				cout << "Data contain non numeric value.\nPlease try again" << endl;
 				return false;
 			}
 			data.back().push_back(stoi(val)); //append data 
@@ -143,13 +142,13 @@ bool getData(ifstream& f, vector<vector<double>>& data) {
 
 bool isColRowMatch(vector<vector<double>> data, int col, int row) {
 	if (row != data.size()) {
-		cout << "Data row does not match with given input" << endl;
+		cout << "Data row does not match with given input\nPlease try again" << endl;
 		return false;
 	}
 
 	for (auto item : data)
 		if (item.size() != col) {
-			cout << "Data column does not match with given input" << endl;
+			cout << "Data column does not match with given input\nPlease try again" << endl;
 			return false;
 		}
 
