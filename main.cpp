@@ -46,11 +46,14 @@ int main() {
 //load file
 
 bool isNum(string s) {
+  int dotCount = 0;
 	for (char c : s)
-		if (!isdigit(c) && c != '.') //check if a char is num or dot
-			return false;
+		if (!isdigit(c) && c != '.')
+      return false;
+    else if (c == '.')
+      dotCount++;
 
-	return true; //check completed
+	return dotCount<2; //check completed
 }
 
 void loadFile(vector<string>& title, vector<vector<double>>& data, int& col, int& row) {
