@@ -37,11 +37,11 @@ int main() {
 	transposeV(data, dataTp);
 
 	//debug see output
-	for (auto item : dataTp){
-    printV(item);
-    cout << endl;
-  }
-		
+	for (auto item : dataTp) {
+		printV(item);
+		cout << endl;
+	}
+
 
 }
 //load file
